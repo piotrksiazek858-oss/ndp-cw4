@@ -1,0 +1,164 @@
+\documentclass[12pt,twoside]{book}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{tikz}
+
+\title{Skład tekstu w praktyce}
+\author{Piotr Książek}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\listoffigures
+\listoftables
+
+% zad 3
+\part{Podstawy LaTeX}
+
+\chapter{Wprowadzenie}
+\section{Pierwsza sekcja}
+\lipsum[1]
+\subsection{Pierwszy podrozdział}
+\lipsum[2]
+
+% zad 5-11
+\section{Krój pisma}
+
+\textbf{Tekst pogrubiony}
+
+\textsl{Tekst pochylony}
+
+\textit{Tekst kursywą}
+
+\underline{Tekst z podkreśleniem}
+
+\verb!Tekst maszynopis!
+
+{\Large Większa czcionka}
+
+{\small Mniejsza czcionka}
+
+% zad 12
+\section{Lista numerowana}
+\begin{enumerate}
+\item Pierwszy
+\item Drugi
+\item Trzeci
+\end{enumerate}
+
+% zad 13
+\section{Lista wypunktowana}
+\begin{itemize}
+\item Jabłko
+\item Gruszka
+\item Banan
+\end{itemize}
+
+% zad 14
+\chapter{Rysunki i tabele}
+\section{Rysunek}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{obrazek.png}
+\caption{Przykładowy rysunek}
+\label{fig:rysunek}
+\end{figure}
+
+% zad 15
+\section{Tabela}
+\begin{table}[H]
+\centering
+\caption{Tabela testowa}
+\label{tab:test}
+\begin{tabular}{|c|c|c|}
+\hline
+1 & 2 & 3 \\ \hline
+4 & 5 & 6 \\ \hline
+7 & 8 & 9 \\ \hline
+10 & 11 & 12 \\ \hline
+13 & 14 & 15 \\ \hline
+\end{tabular}
+\end{table}
+
+% zad 16 i 17
+\chapter{Wzory}
+\section{Pole koła}
+\begin{equation}
+P = \pi r^2
+\label{eq:kolo}
+\end{equation}
+
+\section{Równanie kwadratowe}
+\begin{equation}
+\Delta = b^2 - 4 \cdot a \cdot c
+\label{eq:delta}
+\end{equation}
+\begin{equation}
+x_1 = \frac{-b - \sqrt{\Delta}}{2 \cdot a}
+\end{equation}
+\begin{equation}
+x_2 = \frac{-b + \sqrt{\Delta}}{2 \cdot a}
+\end{equation}
+
+% zad 18
+\section{Odwołania}
+Rysunek \ref{fig:rysunek} jest na stronie \pageref{fig:rysunek}
+Tabela \ref{tab:test} ma 3 kolumny
+Wzór \ref{eq:kolo} to pole koła a wzór \ref{eq:delta} to delta
+
+% zad 19
+\chapter{Przypisy i znaki}
+Zdanie z przypisem\footnote{Przypis dolny}
+
+% zad 20
+\section{Znaki specjalne}
+\$ \# \% \^{} \& \textquotedbl{} [ ] \textbackslash{} \textasciitilde{} \{ \} | \_ @
+
+% zad 22
+\chapter{Grafika TikZ}
+\section{Rysunki w PGF/TikZ}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[node distance=1.25cm, main/.style={draw, circle}]
+\node[main] (1) {a};
+\node[main] (2) [below right of=1] {b};
+\node[main] (3) [above right of=1] {c};
+\node[main, draw=none] (4) [right of=3] {~};
+\draw[->] (1) to (2);
+\draw[->, color=green] (1) to (3);
+\draw[->, dashed, color=blue] (3) to (4);
+\end{tikzpicture}
+\caption{Początkowy graf}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[node distance=1.25cm, main/.style={draw, circle}]
+\node[main] (1) {a};
+\node[main] (2) [below right of=1] {b};
+\node[main] (3) [above right of=1] {c};
+\node[main, draw=none] (4) [right of=3] {~};
+\node[main] (5) at (4.2,0) {$\Delta$};
+\node[main] (6) at (6.2,-0.88) {z};
+\draw[->] (1) to (2);
+\draw[->, color=green] (1) to (3);
+\draw[->, dashed, color=blue] (3) to (4);
+\draw[dotted] (1) to (5);
+\draw[->] (3) to (5);
+\draw[->] (2) to (5);
+\draw[red] (2) to (6);
+\draw[->>, red] (6) to (5);
+\end{tikzpicture}
+\caption{Końcowy graf}
+\end{figure}
+
+\end{document}
